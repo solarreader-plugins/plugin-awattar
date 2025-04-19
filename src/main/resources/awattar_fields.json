@@ -1,0 +1,597 @@
+[
+  {
+    "name": "Awattar",
+    "command": "https://{provider_host}/v1/marketdata?start={epochMillis}",
+    "propertyFieldList": [
+      {
+        "fieldName": "start_timestamp_hour_0",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_0_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_0",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_0_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_0",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_0_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_0",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_0_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_1",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_1_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_1",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_1_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_1",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_1_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_1",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_1_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_2",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_2_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_2",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_2_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_2",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_2_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_2",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_2_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_3",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_3_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_3",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_3_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_3",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_3_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_3",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_3_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_4",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_4_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_4",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_4_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_4",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_4_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_4",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_4_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_5",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_5_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_5",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_5_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_5",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_5_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_5",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_5_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_6",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_6_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_6",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_6_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_6",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_6_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_6",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_6_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_7",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_7_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_7",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_7_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_7",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_7_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_7",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_7_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_8",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_8_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_8",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_8_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_8",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_8_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_8",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_8_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_9",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_9_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_9",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_9_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_9",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_9_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_9",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_9_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_10",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_10_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_10",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_10_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_10",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_10_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_10",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_10_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_11",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_11_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_11",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_11_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_11",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_11_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_11",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_11_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_12",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_12_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_12",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_12_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_12",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_12_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_12",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_12_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_13",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_13_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_13",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_13_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_13",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_13_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_13",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_13_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_14",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_14_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_14",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_14_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_14",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_14_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_14",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_14_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_15",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_15_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_15",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_15_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_15",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_15_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_15",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_15_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_16",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_16_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_16",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_16_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_16",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_16_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_16",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_16_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_17",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_17_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_17",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_17_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_17",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_17_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_17",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_17_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_18",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_18_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_18",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_18_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_18",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_18_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_18",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_18_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_19",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_19_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_19",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_19_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_19",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_19_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_19",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_19_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_20",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_20_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_20",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_20_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_20",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_20_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_20",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_20_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_21",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_21_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_21",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_21_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_21",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_21_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_21",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_21_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_22",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_22_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_22",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_22_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_22",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_22_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_22",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_22_unit"
+      },
+      {
+        "fieldName": "start_timestamp_hour_23",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_23_start_timestamp"
+      },
+      {
+        "fieldName": "end_timestamp_hour_23",
+        "fieldType": "TIMESTAMP",
+        "expression": "value",
+        "index": "data_23_end_timestamp"
+      },
+      {
+        "fieldName": "marketprice_hour_23",
+        "fieldType": "NUMBER",
+        "expression": "value + offset",
+        "index": "data_23_marketprice"
+      },
+      {
+        "fieldName": "unit_hour_23",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "data_23_unit"
+      },
+      {
+        "fieldName": "object",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "object"
+      },
+      {
+        "fieldName": "url",
+        "fieldType": "STRING",
+        "expression": "value",
+        "index": "url"
+      }
+    ],
+    "providerPropertyType": "COMMAND"
+  }
+]
