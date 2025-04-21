@@ -4,9 +4,9 @@
 ![Issues](https://img.shields.io/github/issues/solarreader-plugins/plugin-awattar)
 
 
-# aWATTar Plugin for SolarReader
+# aWATTar Plugin for Solarreader
 
-This plugin adds support for dynamic electricity pricing from **[aWATTar](https://www.awattar.at/)** to **SolarReader**.
+This plugin adds support for dynamic electricity pricing from **[aWATTar](https://www.awattar.at/)** to **Solarreader**.
 
 **aWATTar** offers real-time electricity prices based on the wholesale market. This allows consumers to monitor and optimize their energy usage according to the actual hourly price of electricity.
 
