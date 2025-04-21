@@ -4,10 +4,21 @@
 ![Issues](https://img.shields.io/github/issues/solarreader-plugins/plugin-awattar)
 
 
-# Awattar Plugin for Solarreader
-This plugin for Solarreader reads the current market electricity prices from the online service awattar.
-For more information, visit https://energy.tado.com/services/api
+# aWATTar Plugin for SolarReader
 
-The plugin requires the main project Solarreader-core, which can be found here:
-https://github.com/solarreader-core/solarreader
+This plugin adds support for dynamic electricity pricing from **[aWATTar](https://www.awattar.at/)** to **SolarReader**.
+
+**aWATTar** offers real-time electricity prices based on the wholesale market. This allows consumers to monitor and optimize their energy usage according to the actual hourly price of electricity.
+
+## Features
+
+- Fetches hourly electricity prices from the aWATTar API
+- Supports market zones: Austria (AT), Germany (DE)
+- Enables cost-aware energy monitoring and automation
+
+### Requirements
+
+This plugin requires the main project **Solarreader**, which can be found here:  
+[https://github.com/solarreader-core/solarreader](https://github.com/solarreader-core/solarreader)
+
 
