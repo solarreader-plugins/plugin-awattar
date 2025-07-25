@@ -25,18 +25,16 @@ import de.schnippsche.solarreader.backend.calculator.MapCalculator;
 import de.schnippsche.solarreader.backend.connection.general.ConnectionFactory;
 import de.schnippsche.solarreader.backend.connection.network.HttpConnection;
 import de.schnippsche.solarreader.backend.connection.network.HttpConnectionFactory;
-import de.schnippsche.solarreader.backend.protocol.KnownProtocol;
 import de.schnippsche.solarreader.backend.provider.AbstractHttpProvider;
 import de.schnippsche.solarreader.backend.provider.CommandProviderProperty;
 import de.schnippsche.solarreader.backend.provider.ProviderProperty;
-import de.schnippsche.solarreader.backend.provider.SupportedInterface;
 import de.schnippsche.solarreader.backend.singleton.GlobalUsrStore;
 import de.schnippsche.solarreader.backend.table.*;
-import de.schnippsche.solarreader.backend.table.TableColumnType;
-import de.schnippsche.solarreader.backend.util.*;
+import de.schnippsche.solarreader.backend.util.JsonTools;
+import de.schnippsche.solarreader.backend.util.Setting;
+import de.schnippsche.solarreader.backend.util.StringConverter;
 import de.schnippsche.solarreader.database.Activity;
 import de.schnippsche.solarreader.frontend.ui.*;
-import de.schnippsche.solarreader.plugin.PluginMetadata;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -58,15 +56,6 @@ import org.tinylog.Logger;
  * BigDecimal.ZERO} by default. This offset can be used for price adjustments or other calculations
  * based on the data retrieved from the API.
  */
-@PluginMetadata(
-    name = "Awattar",
-    version = "1.0.1",
-    author = "Stefan Töngi",
-    url = "https://github.com/Schnippsche/Awattar",
-    svgImage = "awattar.svg",
-    supportedInterfaces = {SupportedInterface.URL},
-    usedProtocol = KnownProtocol.HTTP,
-    supports = "Awattar V1")
 public class Awattar extends AbstractHttpProvider {
   private static final String BASE_URL =
       "https://{provider_host}/v1/marketdata?start={epochMillis}";
@@ -97,7 +86,7 @@ public class Awattar extends AbstractHttpProvider {
    * {@code BigDecimal.ZERO} by default.
    *
    * @param connectionFactory The custom implementation of {@link ConnectionFactory} to be used for
-   *     creating {@link HttpConnection} objects.
+   *                          creating {@link HttpConnection} objects.
    */
   public Awattar(ConnectionFactory<HttpConnection> connectionFactory) {
     super(connectionFactory);

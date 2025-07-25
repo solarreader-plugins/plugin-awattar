@@ -6,7 +6,7 @@
 
     <artifactId>Awattar</artifactId>
     <groupId>de.schnippsche.solarreader.plugins</groupId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <properties>
         <compiler.version>11</compiler.version>
@@ -24,6 +24,7 @@
         <solarreader.version>2.0.1</solarreader.version>
         <junit.version>5.12.2</junit.version>
         <mockito.version>5.17.0</mockito.version>
+        <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
     </properties>
 
     <build>
@@ -77,9 +78,17 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Build-Version>${project.version}</Build-Version>
-                            <Build-Date>${maven.build.timestamp}</Build-Date>
+                            <Software-Version>${project.version}</Software-Version>
+                            <Software-Build-Date>${maven.build.timestamp}</Software-Build-Date>
                             <Main-Class>${mainClass}</Main-Class>
+                            <Software-Name>Awattar</Software-Name>
+                            <Software-Author>Stefan Töngi</Software-Author>
+                            <Software-Repository>https://github.com/solarreader-plugins/plugin-awattar
+                            </Software-Repository>
+                            <Software-Icon>awattar.svg</Software-Icon>
+                            <Software-Support-Info>Awattar V1</Software-Support-Info>
+                            <Software-Interfaces>URL</Software-Interfaces>
+                            <Software-Protocol>HTTP</Software-Protocol>
                         </manifestEntries>
                     </archive>
                 </configuration>
