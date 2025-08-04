@@ -6,7 +6,7 @@
 
     <artifactId>Awattar</artifactId>
     <groupId>de.schnippsche.solarreader.plugins</groupId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <properties>
         <maven.compiler.release>11</maven.compiler.release>
