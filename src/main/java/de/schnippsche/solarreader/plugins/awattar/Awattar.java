@@ -153,7 +153,7 @@ public class Awattar extends AbstractHttpProvider {
     table.addColumn(timestampColumn);
     for (int hour = 0; hour < 24; hour++) {
       TableRow tableRow = new TableRow();
-      String preCondition = String.format(TIMESTAMP_KEY_FORMAT + " > 0", hour);
+      String preCondition = String.format(TIMESTAMP_KEY_FORMAT + " != NULL", hour);
       tableRow.addCell(new TableCell(preCondition, String.format(TIMESTAMP_FORMAT, hour)));
       tableRow.addCell(new TableCell(preCondition, String.format(PRICE_KEY_FORMAT, hour)));
       tableRow.addCell(new TableCell(preCondition, String.format(HOUR_FORMAT, hour)));
@@ -228,6 +228,12 @@ public class Awattar extends AbstractHttpProvider {
     URL url = getApiUrl(knownSetting, pattern);
     Map<String, Object> values =
         new JsonTools().getSimpleMapFromJsonString(httpConnection.getAsString(url));
+    // Add missing hourly market price fields to enable correct value and offset calculation
+    for (int hour = 0; hour < 24; hour++) {
+      String key = String.format("data_%d_marketprice", hour);
+      values.putIfAbsent(key, BigDecimal.ZERO);
+    }
+
     new MapCalculator()
         .calculate(values, commandProviderProperty.getPropertyFieldList(), variables);
   }
