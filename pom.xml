@@ -21,7 +21,7 @@
         <!-- Dependency Versions -->
         <junit.version>5.12.2</junit.version>
         <mockito.version>5.18.0</mockito.version>
-        <solarreader.version>2.0.1</solarreader.version>
+        <solarreader.version>2.1.0</solarreader.version>
         <!-- main class -->
         <mainClass>de.schnippsche.solarreader.plugins.awattar.Awattar</mainClass>
         <!-- Project Metadata -->
@@ -119,8 +119,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.schnippsche</groupId>
-            <artifactId>Solarreader</artifactId>
+            <groupId>de.solarreader.core</groupId>
+            <artifactId>Solarreader-core</artifactId>
             <version>${solarreader.version}</version>
             <scope>provided</scope>
         </dependency>

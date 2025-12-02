@@ -1,0 +1,554 @@
+- type: "HOST"
+  name: "Awattar"
+  activity:
+    poll-interval: "1h"
+    active-time:
+      from:
+        base_type: "TIME"
+        offset_duration: "0s"
+        local_time: "01:00:00"
+      to:
+        base_type: "TIME"
+        offset_duration: "0s"
+        local_time: "18:00:00"
+  data-layout:
+    values:
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_0_start_timestamp"
+        variable_name: "start_timestamp_hour_0"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_0_end_timestamp"
+        variable_name: "end_timestamp_hour_0"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_0_marketprice"
+        variable_name: "marketprice_hour_0"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_0_unit"
+        variable_name: "unit_hour_0"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_1_start_timestamp"
+        variable_name: "start_timestamp_hour_1"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_1_end_timestamp"
+        variable_name: "end_timestamp_hour_1"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_1_marketprice"
+        variable_name: "marketprice_hour_1"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_1_unit"
+        variable_name: "unit_hour_1"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_2_start_timestamp"
+        variable_name: "start_timestamp_hour_2"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_2_end_timestamp"
+        variable_name: "end_timestamp_hour_2"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_2_marketprice"
+        variable_name: "marketprice_hour_2"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_2_unit"
+        variable_name: "unit_hour_2"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_3_start_timestamp"
+        variable_name: "start_timestamp_hour_3"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_3_end_timestamp"
+        variable_name: "end_timestamp_hour_3"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_3_marketprice"
+        variable_name: "marketprice_hour_3"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_3_unit"
+        variable_name: "unit_hour_3"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_4_start_timestamp"
+        variable_name: "start_timestamp_hour_4"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_4_end_timestamp"
+        variable_name: "end_timestamp_hour_4"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_4_marketprice"
+        variable_name: "marketprice_hour_4"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_4_unit"
+        variable_name: "unit_hour_4"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_5_start_timestamp"
+        variable_name: "start_timestamp_hour_5"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_5_end_timestamp"
+        variable_name: "end_timestamp_hour_5"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_5_marketprice"
+        variable_name: "marketprice_hour_5"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_5_unit"
+        variable_name: "unit_hour_5"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_6_start_timestamp"
+        variable_name: "start_timestamp_hour_6"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_6_end_timestamp"
+        variable_name: "end_timestamp_hour_6"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_6_marketprice"
+        variable_name: "marketprice_hour_6"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_6_unit"
+        variable_name: "unit_hour_6"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_7_start_timestamp"
+        variable_name: "start_timestamp_hour_7"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_7_end_timestamp"
+        variable_name: "end_timestamp_hour_7"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_7_marketprice"
+        variable_name: "marketprice_hour_7"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_7_unit"
+        variable_name: "unit_hour_7"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_8_start_timestamp"
+        variable_name: "start_timestamp_hour_8"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_8_end_timestamp"
+        variable_name: "end_timestamp_hour_8"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_8_marketprice"
+        variable_name: "marketprice_hour_8"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_8_unit"
+        variable_name: "unit_hour_8"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_9_start_timestamp"
+        variable_name: "start_timestamp_hour_9"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_9_end_timestamp"
+        variable_name: "end_timestamp_hour_9"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_9_marketprice"
+        variable_name: "marketprice_hour_9"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_9_unit"
+        variable_name: "unit_hour_9"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_10_start_timestamp"
+        variable_name: "start_timestamp_hour_10"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_10_end_timestamp"
+        variable_name: "end_timestamp_hour_10"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_10_marketprice"
+        variable_name: "marketprice_hour_10"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_10_unit"
+        variable_name: "unit_hour_10"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_11_start_timestamp"
+        variable_name: "start_timestamp_hour_11"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_11_end_timestamp"
+        variable_name: "end_timestamp_hour_11"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_11_marketprice"
+        variable_name: "marketprice_hour_11"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_11_unit"
+        variable_name: "unit_hour_11"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_12_start_timestamp"
+        variable_name: "start_timestamp_hour_12"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_12_end_timestamp"
+        variable_name: "end_timestamp_hour_12"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_12_marketprice"
+        variable_name: "marketprice_hour_12"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_12_unit"
+        variable_name: "unit_hour_12"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_13_start_timestamp"
+        variable_name: "start_timestamp_hour_13"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_13_end_timestamp"
+        variable_name: "end_timestamp_hour_13"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_13_marketprice"
+        variable_name: "marketprice_hour_13"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_13_unit"
+        variable_name: "unit_hour_13"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_14_start_timestamp"
+        variable_name: "start_timestamp_hour_14"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_14_end_timestamp"
+        variable_name: "end_timestamp_hour_14"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_14_marketprice"
+        variable_name: "marketprice_hour_14"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_14_unit"
+        variable_name: "unit_hour_14"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_15_start_timestamp"
+        variable_name: "start_timestamp_hour_15"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_15_end_timestamp"
+        variable_name: "end_timestamp_hour_15"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_15_marketprice"
+        variable_name: "marketprice_hour_15"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_15_unit"
+        variable_name: "unit_hour_15"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_16_start_timestamp"
+        variable_name: "start_timestamp_hour_16"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_16_end_timestamp"
+        variable_name: "end_timestamp_hour_16"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_16_marketprice"
+        variable_name: "marketprice_hour_16"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_16_unit"
+        variable_name: "unit_hour_16"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_17_start_timestamp"
+        variable_name: "start_timestamp_hour_17"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_17_end_timestamp"
+        variable_name: "end_timestamp_hour_17"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_17_marketprice"
+        variable_name: "marketprice_hour_17"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_17_unit"
+        variable_name: "unit_hour_17"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_18_start_timestamp"
+        variable_name: "start_timestamp_hour_18"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_18_end_timestamp"
+        variable_name: "end_timestamp_hour_18"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_18_marketprice"
+        variable_name: "marketprice_hour_18"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_18_unit"
+        variable_name: "unit_hour_18"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_19_start_timestamp"
+        variable_name: "start_timestamp_hour_19"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_19_end_timestamp"
+        variable_name: "end_timestamp_hour_19"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_19_marketprice"
+        variable_name: "marketprice_hour_19"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_19_unit"
+        variable_name: "unit_hour_19"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_20_start_timestamp"
+        variable_name: "start_timestamp_hour_20"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_20_end_timestamp"
+        variable_name: "end_timestamp_hour_20"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_20_marketprice"
+        variable_name: "marketprice_hour_20"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_20_unit"
+        variable_name: "unit_hour_20"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_21_start_timestamp"
+        variable_name: "start_timestamp_hour_21"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_21_end_timestamp"
+        variable_name: "end_timestamp_hour_21"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_21_marketprice"
+        variable_name: "marketprice_hour_21"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_21_unit"
+        variable_name: "unit_hour_21"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_22_start_timestamp"
+        variable_name: "start_timestamp_hour_22"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_22_end_timestamp"
+        variable_name: "end_timestamp_hour_22"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_22_marketprice"
+        variable_name: "marketprice_hour_22"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_22_unit"
+        variable_name: "unit_hour_22"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_23_start_timestamp"
+        variable_name: "start_timestamp_hour_23"
+      - format:
+          type: "text-timestamp"
+          time_unit: "milliseconds"
+        index: "data_23_end_timestamp"
+        variable_name: "end_timestamp_hour_23"
+      - format:
+          type: "text-number"
+          charset: "ISO-8859-1"
+        metadata:
+          expression: "value + offset"
+        index: "data_23_marketprice"
+        variable_name: "marketprice_hour_23"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "data_23_unit"
+        variable_name: "unit_hour_23"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "object"
+        variable_name: "object"
+      - format:
+          type: "text-string"
+          charset: "ISO-8859-1"
+        index: "url"
+        variable_name: "url"
+  url: "https://{provider_host}/v1/marketdata?start={epochMillis}"
