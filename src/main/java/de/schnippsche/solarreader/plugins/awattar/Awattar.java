@@ -21,17 +21,7 @@
  */
 package de.schnippsche.solarreader.plugins.awattar;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.ZonedDateTime;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
-import org.tinylog.Logger;
+import static de.solarreader.core.connection.host.HostConnection.CONTENT_TYPE_JSON;
 
 import de.solarreader.core.EnvironmentProfile;
 import de.solarreader.core.Result;
@@ -53,8 +43,16 @@ import de.solarreader.core.util.JsonFlattener;
 import de.solarreader.core.util.StringConverter;
 import de.solarreader.core.util.UrlBuilder;
 import de.solarreader.core.value.Converter;
-
-import static de.solarreader.core.connection.host.HostConnection.CONTENT_TYPE_JSON;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.ZonedDateTime;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.ResourceBundle;
+import org.tinylog.Logger;
 
 /**
  * The {@code Awattar} class is an implementation of {@link AbstractHostPlugin}.
@@ -68,103 +66,110 @@ import static de.solarreader.core.connection.host.HostConnection.CONTENT_TYPE_JS
  * BigDecimal.ZERO} by default. This offset can be used for price adjustments or other calculations based on the data
  * retrieved from the API.
  */
-public class Awattar extends AbstractHostPlugin
-{
-    private static final String AWATTAR_PRICE = "awattar_price";
+public class Awattar extends AbstractHostPlugin {
+  private static final String AWATTAR_PRICE = "awattar_price";
 
-    private final BigDecimal offset;
+  private final BigDecimal offset;
 
-    private final ResourceBundle resourceBundle;
+  private final ResourceBundle resourceBundle;
 
-    /**
-     * Default constructor for the {@code Awattar} class.
-     *
-     * <p>This constructor creates a new instance of {@code Awattar} using a default implementation of
-     * {@link HostConnectionFactory}.
-     */
-    public Awattar(Configuration config, EnvironmentProfile environmentProfile)
-    {
-        this(new HostConnectionFactory(), config, environmentProfile);
+  /**
+   * Default constructor for the {@code Awattar} class.
+   *
+   * <p>This constructor creates a new instance of {@code Awattar} using a default implementation of
+   * {@link HostConnectionFactory}.
+   */
+  public Awattar(Configuration config, EnvironmentProfile environmentProfile) {
+    this(new HostConnectionFactory(), config, environmentProfile);
+  }
+
+  public Awattar(
+      HostConnectionFactory connectionFactory,
+      Configuration config,
+      EnvironmentProfile environmentProfile) {
+    super(connectionFactory, config, environmentProfile);
+    this.offset =
+        config.extraSettings().isPresent()
+            ? (BigDecimal) config.extraSettings().get().getOrDefault("offset", BigDecimal.ZERO)
+            : BigDecimal.ZERO;
+
+    this.resourceBundle = ResourceBundle.getBundle("awattar", environmentProfile.locale());
+    Logger.debug("instantiate {}", this.getClass().getName());
+  }
+
+  @Override
+  public Optional<UIList> installDialog() {
+    UIList uiList = new UIList();
+    uiList.addElement(
+        new UITextElementBuilder().withLabel(resourceBundle.getString("awattar.title")).build());
+    uiList.addElement(
+        new UIInputElementBuilder()
+            .withId("id-awattar-price")
+            .withRequired(true)
+            .withType(HtmlInputType.NUMBER)
+            .withStep("any")
+            .withColumnWidth(HtmlWidth.HALF)
+            .withLabel(resourceBundle.getString("awattar.price.text"))
+            .withName(AWATTAR_PRICE)
+            .withPlaceholder(resourceBundle.getString("awattar.price.text"))
+            .withTooltip(resourceBundle.getString("awattar.price.tooltip"))
+            .withInvalidFeedback(resourceBundle.getString("awattar.price.error"))
+            .build());
+
+    return Optional.of(uiList);
+  }
+
+  @Override
+  public List<Field> defaultReadableFields() {
+    return loadFields("awattar_fields.yaml").orElse(Collections.emptyList());
+  }
+
+  @Override
+  public List<TableConfiguration> defaultExportTables() {
+    return loadTables("awattar_tables.yaml").orElse(Collections.emptyList());
+  }
+
+  @Override
+  public Configuration defaultConfiguration() {
+    return HostConfig.Builder.withDefaults()
+        .withHost("api.awattar.de")
+        .withReadTimeoutMillis(5000)
+        .withExtraSettings(Map.of(AWATTAR_PRICE, "0.00"))
+        .build();
+  }
+
+  @Override
+  public Result verifyConnection(HostConnection connection) {
+    String testUrl = UrlBuilder.buildUrl(hostConfig);
+    try {
+      connection.test(UrlBuilder.buildUri(testUrl), CONTENT_TYPE_JSON);
+    } catch (IOException e) {
+      return Result.error(e.getMessage());
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      return Result.error(e.getMessage());
     }
+    return Result.success(resourceBundle.getString("awattar.connection.successful"));
+  }
 
-    public Awattar(HostConnectionFactory connectionFactory, Configuration config, EnvironmentProfile environmentProfile)
-    {
-        super(connectionFactory, config, environmentProfile);
-        this.offset = config.extraSettings().isPresent() ?
-            (BigDecimal) config.extraSettings().get().getOrDefault("offset", BigDecimal.ZERO) : BigDecimal.ZERO;
-
-        this.resourceBundle = ResourceBundle.getBundle("awattar", environmentProfile.locale());
-        Logger.debug("instantiate {}", this.getClass().getName());
+  @Override
+  protected void processHostField(
+      HostConnection connection, HostField hostField, Map<String, Object> variables)
+      throws IOException, InterruptedException {
+    variables.put("offset", offset);
+    Map<String, String> placeHolderMap = new HashMap<>();
+    ZonedDateTime localDateTime = ZonedDateTime.now(environmentProfile.zoneId());
+    long epochMillis = localDateTime.toInstant().toEpochMilli();
+    placeHolderMap.put("epochMillis", String.valueOf(epochMillis));
+    placeHolderMap.put("provider_host", hostConfig.host());
+    String url = new StringConverter(hostField.url()).replaceNamedPlaceholders(placeHolderMap);
+    String json = connection.getAsString(UrlBuilder.buildUri(url));
+    Map<String, String> map = JsonFlattener.flatten(json);
+    Converter.convertAndPopulateIndexedVariables(hostField.dataLayout().values(), map, variables);
+    // Add missing hourly market price fields to enable correct value and offset calculation
+    for (int hour = 0; hour < 24; hour++) {
+      String key = String.format("data_%d_marketprice", hour);
+      variables.putIfAbsent(key, BigDecimal.ZERO);
     }
-
-    @Override
-    public Optional<UIList> installDialog()
-    {
-        UIList uiList = new UIList();
-        uiList.addElement(new UITextElementBuilder().withLabel(resourceBundle.getString("awattar.title")).build());
-        uiList.addElement(
-            new UIInputElementBuilder().withId("id-awattar-price").withRequired(true).withType(HtmlInputType.NUMBER)
-                .withStep("any").withColumnWidth(HtmlWidth.HALF)
-                .withLabel(resourceBundle.getString("awattar.price.text")).withName(AWATTAR_PRICE)
-                .withPlaceholder(resourceBundle.getString("awattar.price.text"))
-                .withTooltip(resourceBundle.getString("awattar.price.tooltip"))
-                .withInvalidFeedback(resourceBundle.getString("awattar.price.error")).build());
-
-        return Optional.of(uiList);
-    }
-
-    @Override
-    public List<Field> defaultReadableFields()
-    {
-        return loadFields("awattar_fields.yaml").orElse(Collections.emptyList());
-    }
-
-    @Override
-    public List<TableConfiguration> defaultExportTables()
-    {
-        return loadTables("awattar_tables.yaml").orElse(Collections.emptyList());
-    }
-
-    @Override
-    public Configuration defaultConfiguration()
-    {
-        return HostConfig.Builder.withDefaults().withHost("api.awattar.de").withReadTimeoutMillis(5000)
-            .withExtraSettings(Map.of(AWATTAR_PRICE, "0.00")).build();
-    }
-
-    @Override
-    public Result verifyConnection(HostConnection connection)
-    {
-        String testUrl = UrlBuilder.buildUrl(hostConfig);
-        try {
-            connection.test(UrlBuilder.buildUri(testUrl), CONTENT_TYPE_JSON);
-        } catch (IOException e) {
-            return Result.error(e.getMessage());
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return Result.error(e.getMessage());
-        }
-        return Result.success(resourceBundle.getString("awattar.connection.successful"));
-    }
-
-    @Override
-    protected void processHostField(HostConnection connection, HostField hostField, Map<String, Object> variables)
-        throws IOException, InterruptedException
-    {
-        variables.put("offset", offset);
-        Map<String, String> placeHolderMap = new HashMap<>();
-        ZonedDateTime localDateTime = ZonedDateTime.now(environmentProfile.zoneId());
-        long epochMillis = localDateTime.toInstant().toEpochMilli();
-        placeHolderMap.put("epochMillis", String.valueOf(epochMillis));
-        placeHolderMap.put("provider_host", hostConfig.host());
-        String url = new StringConverter(hostField.url()).replaceNamedPlaceholders(placeHolderMap);
-        String json = connection.getAsString(UrlBuilder.buildUri(url));
-        Map<String, String> map = JsonFlattener.flatten(json);
-        Converter.convertAndPopulateIndexedVariables(hostField.dataLayout().values(), map, variables);
-        // Add missing hourly market price fields to enable correct value and offset calculation
-        for (int hour = 0; hour < 24; hour++) {
-            String key = String.format("data_%d_marketprice", hour);
-            variables.putIfAbsent(key, BigDecimal.ZERO);
-        }
-    }
+  }
 }

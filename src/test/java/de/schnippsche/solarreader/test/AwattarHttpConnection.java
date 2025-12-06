@@ -21,6 +21,7 @@
  */
 package de.schnippsche.solarreader.test;
 
+import de.solarreader.core.connection.host.HostConnection;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,66 +33,52 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Objects;
 
-import de.solarreader.core.connection.host.HostConnection;
+public class AwattarHttpConnection implements HostConnection {
+  @Override
+  public void test(URI url, String validMediaType) {}
 
-public class AwattarHttpConnection implements HostConnection
-{
-    @Override
-    public void test(URI url, String validMediaType)
-    {
-    }
+  @Override
+  public HttpRequest buildGetRequest(URI url, Map<String, String> headers) {
+    return null;
+  }
 
-    @Override
-    public HttpRequest buildGetRequest(URI url, Map<String, String> headers)
-    {
-        return null;
-    }
+  @Override
+  public HttpRequest buildPostRequest(URI url, Map<String, String> headers, String body) {
+    return null;
+  }
 
-    @Override
-    public HttpRequest buildPostRequest(URI url, Map<String, String> headers, String body)
-    {
-        return null;
-    }
+  @Override
+  public HttpResponse<String> get(URI url) {
+    return null;
+  }
 
-    @Override
-    public HttpResponse<String> get(URI url)
-    {
-        return null;
+  @Override
+  public String getAsString(URI url) {
+    if (url.toString().startsWith("https://api.awattar.de")) {
+      try {
+        Path path =
+            Paths.get(
+                Objects.requireNonNull(
+                        getClass().getClassLoader().getResource("awattar_response.json"))
+                    .toURI());
+        return Files.readString(path);
+      } catch (URISyntaxException | IOException e) {
+        throw new RuntimeException(e);
+      }
     }
+    return null;
+  }
 
-    @Override
-    public String getAsString(URI url)
-    {
-        if (url.toString().startsWith("https://api.awattar.de")) {
-            try {
-                Path path =
-                    Paths.get(
-                        Objects.requireNonNull(
-                                getClass().getClassLoader().getResource("awattar_response.json"))
-                            .toURI());
-                return Files.readString(path);
-            } catch (URISyntaxException | IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return null;
-    }
+  @Override
+  public HttpResponse<String> post(URI url, Map<String, String> formData, String body) {
+    return null;
+  }
 
-    @Override
-    public HttpResponse<String> post(URI url, Map<String, String> formData, String body)
-    {
-        return null;
-    }
+  @Override
+  public HttpResponse<String> sendRequest(HttpRequest request) {
+    return null;
+  }
 
-    @Override
-    public HttpResponse<String> sendRequest(HttpRequest request)
-    {
-        return null;
-    }
-
-    @Override
-    public void close() throws IOException
-    {
-        
-    }
+  @Override
+  public void close() throws IOException {}
 }

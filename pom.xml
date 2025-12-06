@@ -1,147 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Awattar</artifactId>
-    <groupId>de.schnippsche.solarreader.plugins</groupId>
-    <version>1.0.4</version>
+  <artifactId>Awattar</artifactId>
+  <groupId>de.schnippsche.solarreader.plugins</groupId>
+  <version>1.0.4</version>
 
-    <properties>
-        <maven.compiler.release>11</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
-        <!-- Plugin Versions -->
-        <spotless.version>2.46.1</spotless.version>
-        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
-        <maven.jar.plugin.version>3.4.1</maven.jar.plugin.version>
-        <maven.surefire.plugin.version>3.5.3</maven.surefire.plugin.version>
-        <maven.resource.plugin>3.3.1</maven.resource.plugin>
-        <!-- Dependency Versions -->
-        <junit.version>5.12.2</junit.version>
-        <mockito.version>5.18.0</mockito.version>
-        <solarreader.version>2.1.0</solarreader.version>
-        <!-- main class -->
-        <mainClass>de.schnippsche.solarreader.plugins.awattar.Awattar</mainClass>
-        <!-- Project Metadata -->
-        <software.main.class>${mainClass}</software.main.class>
-        <software.name>${project.artifactId}</software.name>
-        <software.version>${project.version}</software.version>
-        <software.build.date>${maven.build.timestamp}</software.build.date>
-        <software.author>Stefan Töngi</software.author>
-        <software.repository>https://github.com/solarreader-plugins/plugin-awattar</software.repository>
-        <software.icon>awattar.svg</software.icon>
-        <software.support.info>Awattar V1 API</software.support.info>
-        <software.interfaces>URL</software.interfaces>
-        <software.protocol>HTTP</software.protocol>
+  <properties>
+    <maven.compiler.release>11</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
+    <!-- Plugin Versions -->
+    <spotless.version>2.46.1</spotless.version>
+    <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+    <maven.jar.plugin.version>3.4.1</maven.jar.plugin.version>
+    <maven.surefire.plugin.version>3.5.3</maven.surefire.plugin.version>
+    <maven.resource.plugin>3.3.1</maven.resource.plugin>
+    <!-- Dependency Versions -->
+    <junit.version>5.12.2</junit.version>
+    <solarreader.version>2.1.0</solarreader.version>
+    <!-- main class -->
+    <mainClass>de.schnippsche.solarreader.plugins.awattar.Awattar</mainClass>
+  </properties>
 
-    </properties>
+  <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
 
-    <build>
-        <finalName>${project.artifactId}-${project.version}</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
 
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+    <plugins>
+      <plugin>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <groupId>com.diffplug.spotless</groupId>
+        <version>${spotless.version}</version>
+        <configuration>
+          <java>
+            <googleJavaFormat>
+              <formatJavadoc>false</formatJavadoc>
+              <reflowLongStrings>true</reflowLongStrings>
+              <style>GOOGLE</style>
+            </googleJavaFormat>
+            <includes>
+              <include>src/main/java/**/*.java</include>
+              <include>src/test/java/**/*.java</include>
+            </includes>
+            <licenseHeader>
+              <file>spotless-header.txt</file>
+            </licenseHeader>
+          </java>
+        </configuration>
+        <executions>
+          <execution>
+            <id>spotless-check</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+      </plugin>
 
-        <plugins>
-            <plugin>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <groupId>com.diffplug.spotless</groupId>
-                <version>${spotless.version}</version>
-                <configuration>
-                    <java>
-                        <googleJavaFormat>
-                            <formatJavadoc>false</formatJavadoc>
-                            <reflowLongStrings>true</reflowLongStrings>
-                            <style>GOOGLE</style>
-                        </googleJavaFormat>
-                        <includes>
-                            <include>src/main/java/**/*.java</include>
-                            <include>src/test/java/**/*.java</include>
-                        </includes>
-                        <licenseHeader>
-                            <file>spotless-header.txt</file>
-                        </licenseHeader>
-                    </java>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>spotless-check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>verify</phase>
-                    </execution>
-                </executions>
-            </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>${maven.compiler.plugin.version}</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+        </configuration>
+      </plugin>
 
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                </configuration>
-            </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>${maven.jar.plugin.version}</version>
+        <configuration>
+          <archive>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+        </configuration>
+      </plugin>
 
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-                <version>${maven.jar.plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>${mainClass}</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>${maven.surefire.plugin.version}</version>
+      </plugin>
 
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-                <version>${maven.surefire.plugin.version}</version>
-            </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven.resource.plugin}</version>
+      </plugin>
 
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven.resource.plugin}</version>
-            </plugin>
+    </plugins>
 
-        </plugins>
+  </build>
 
-    </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>de.solarreader.core</groupId>
-            <artifactId>Solarreader-core</artifactId>
-            <version>${solarreader.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>de.solarreader.core</groupId>
+      <artifactId>Solarreader-core</artifactId>
+      <version>${solarreader.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 </project>
